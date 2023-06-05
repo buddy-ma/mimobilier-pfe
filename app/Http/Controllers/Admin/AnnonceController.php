@@ -16,7 +16,6 @@ class AnnonceController extends Controller
 {
     public function annonces(){
     $annonces=Annonce::all();
-
     return view('admin.mains-admin.annonces.list',compact('annonces'));
     }
     public function ShowAddAnnonce(){
