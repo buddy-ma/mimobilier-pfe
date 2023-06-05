@@ -1232,9 +1232,9 @@ pre {
     background-color: rgba(247, 45, 102, 0.15);
 }
 
-.card-header:before {
+/* .card-header:before {
     background-color: #705ec8;
-}
+} */
 
 .panel.price>.panel-heading {
     background: #705ec8;

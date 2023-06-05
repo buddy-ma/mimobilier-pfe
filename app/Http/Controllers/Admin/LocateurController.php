@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\locateur;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 class LocateurController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function locateurs()
     {
         $locateurs=Locateur::all();
-        return view('admin.mains-admin.locateurs.list', compact('locateurs'));
+        return view('admin.mains-admin.locateurs.list')->with("data", ['locateurs' => $locateurs]);
     }
 
     /**
