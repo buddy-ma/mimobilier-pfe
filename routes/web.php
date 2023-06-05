@@ -34,11 +34,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
 
     //user
     Route::get('/user', [UserController::class, 'User'])->name('user-list');
-    Route::get('/user/add', [UserController::class, 'ShowAddUser'])->name('show-user-add');
-    Route::post('/user/add', [UserController::class, 'UserAdd'])->name('user-add');
-    Route::get('/user/{id?}', [UserController::class, 'UserShow'])->name('user-show');
-    Route::post('/user/{id?}', [UserController::class, 'UserUpdate'])->name('user-update');
-
+   
     //role
     Route::get('/role', [UserController::class, 'Role'])->name('role-list');
     Route::get('/role/add', [UserController::class, 'ShowAddRole'])->name('show-role-add');
@@ -52,6 +48,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::post('/permission/add', [UserController::class, 'PermissionAdd'])->name('permission-add');
     Route::get('/permission/{id?}', [UserController::class, 'PermissionShow'])->name('permission-show');
     Route::post('/permission/{id?}', [UserController::class, 'PermissionUpdate'])->name('permission-update');
+
+    Route::get('/villes', function () {
+        return view('admin.mains-admin.villes');
+    });
+
 });
 
 Route::get('/', function () {

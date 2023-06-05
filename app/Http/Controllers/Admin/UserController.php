@@ -42,9 +42,7 @@ class UserController extends Controller
 
     public function User()
     {
-        $users = User::orderBy('id', 'DESC')->get();
-
-        return view('admin.mains-admin.user.user-list')->with("data", ['users' => $users]);
+        return view('admin.mains-admin.user.user-list');
     }
 
     public function ShowAddUser()
