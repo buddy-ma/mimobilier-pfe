@@ -35,12 +35,24 @@ h1,
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="id_ville">Ville annonce</label>
-                    <input type="text" class="form-control" name="id_ville" value="{{$annonce->id_ville}}">
+                    <label class="form-label">Ville annonce</label>
+                    <select name="id_ville" class="form-control">
+                        <option value="">Select Ville</option>
+                        @foreach ($ville as $item)
+                        <option value="{{ $item->id }}" {{$item->id==$annonce->id_ville ?'selected':''}}>
+                            {{ $item->title }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="id_quartier">Quartier annonce</label>
-                    <input type="text" class="form-control" name="id_quartier" value="{{$annonce->id_quartier}}">
+                    <label class="form-label">Quartier annonce</label>
+                    <select name="id_quartier" class="form-control">
+                        <option value="">Select quartier</option>
+                        @foreach ($quartier as $item)
+                        <option value="{{ $item->id }}" {{$item->id==$annonce->id_quartier ?'selected':''}}>
+                            {{ $item->title }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="Adresse">Adresse annonce</label>
@@ -73,19 +85,31 @@ h1,
                     <input type="text" class="form-control" name="prix" value="{{$annonce->prix}}">
                 </div>
                 <div class="col-md-4">
-                    <label for="Status">Status</label>
-                    <input type="text" class="form-control" name="Status" value="{{$annonce->Status}}">
+                    <label class="form-label">Status annonce</label>
+                    <select name="Status" class="form-control">
+                        <option value="">Select Status</option>
+                        <option value="1" {{$annonce->Status=="1" ?'selected':''}}>Active</option>
+                        <option value="0" {{$annonce->Status=="0"?'selected':''}}>Desactive</option>
+                    </select>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="is_dispo">disponibilité</label>
-                    <input type="text" class="form-control" name="is_dispo" value="{{$annonce->is_dispo}}">
+                    <label class="form-label">disponibilité</label>
+                    <select name="is_dispo" class="form-control">
+                        <option value="">Select disponibilité</option>
+                        <option value="1" {{$annonce->is_dispo=="1" ?'selected':''}}>disponible</option>
+                        <option value="0" {{$annonce->is_dispo== "0"?'selected':''}}>non</option>
+                    </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="is_sponsorised">sponsorisation</label>
-                    <input type="text" class="form-control" name="is_sponsorised" value="{{$annonce->is_sponsorised}}">
+                    <label class="form-label">sponsorisation</label>
+                    <select name="is_sponsorised" class="form-control">
+                        <option value="">Select sponsorisation</option>
+                        <option value="1" {{$annonce->is_sponsorised=="1" ?'selected':''}}>sponsorisé</option>
+                        <option value="0" {{$annonce->is_sponsorised== "0"?'selected':''}}>non</option>
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="Status">vues</label>

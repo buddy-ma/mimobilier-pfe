@@ -48,12 +48,22 @@ h1,
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="id_ville">Ville annonce</label>
-                    <input type="text" class="form-control" name="id_ville" placeholder="ville">
+                    <label class="form-label">Ville annonce</label>
+                    <select name="id_ville" class="form-control">
+                        <option value="">Select Ville</option>
+                        @foreach ($ville as $item)
+                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="id_quartier">Quartier annonce</label>
-                    <input type="text" class="form-control" name="id_quartier" placeholder="quartier">
+                    <label class="form-label">Quartier annonce</label>
+                    <select name="id_quartier" class="form-control">
+                        <option value="">Select quartier</option>
+                        @foreach ($quartier as $item)
+                        <option value="{{ $item->id }}">{{ $item->title }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="Adresse">Adresse annonce</label>
@@ -86,19 +96,31 @@ h1,
                     <input type="text" class="form-control" name="prix" placeholder="prix">
                 </div>
                 <div class="col-md-4">
-                    <label for="Status">Status</label>
-                    <input type="text" class="form-control" name="Status" placeholder="Status">
+                    <label class="form-label">Status annonce</label>
+                    <select name="Status" class="form-control">
+                        <option value="">Select Status</option>
+                        <option value="1">Active</option>
+                        <option value="0">Desactive</option>
+                    </select>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-4">
-                    <label for="is_dispo">disponibilité</label>
-                    <input type="text" class="form-control" name="is_dispo" placeholder="disponibilité">
+                    <label class="form-label">disponibilité</label>
+                    <select name="is_dispo" class="form-control">
+                        <option value="">Select disponibilité</option>
+                        <option value="1">disponible</option>
+                        <option value="0">non</option>
+                    </select>
                 </div>
                 <div class="col-md-4">
-                    <label for="is_sponsorised">sponsorisation</label>
-                    <input type="text" class="form-control" name="is_sponsorised" placeholder="sponsorisation">
+                    <label class="form-label">sponsorisation</label>
+                    <select name="is_sponsorised" class="form-control">
+                        <option value="">Select sponsorisation</option>
+                        <option value="1">sponsorisé</option>
+                        <option value="0">non</option>
+                    </select>
                 </div>
                 <div class="col-md-4">
                     <label for="Status">vues</label>

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Annonce;
 use App\Models\AnnonceImage;
 use App\Models\TypeAnnonce;
+use App\Models\Ville;
+use App\Models\Quartier;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Image;
@@ -14,12 +16,14 @@ class AnnonceController extends Controller
 {
     public function annonces(){
     $annonces=Annonce::all();
-    $images= AnnonceImage::all();
+
     return view('admin.mains-admin.annonces.list',compact('annonces'));
     }
     public function ShowAddAnnonce(){
         $Type=TypeAnnonce::all();
-        return view('admin.mains-admin.annonces.add',compact('Type'));
+        $quartier=Quartier::all();
+        $ville=Ville::all();
+        return view('admin.mains-admin.annonces.add',compact('Type','ville','quartier'));
     }
     public function AnnonceAdd(Request $request){
       $annonce_id=annonce::insertGetId([
@@ -58,7 +62,9 @@ class AnnonceController extends Controller
     public function AnnonceShow($id){
         $annonce=Annonce::find($id);
         $annonceImages=AnnonceImage::where('annonce_id',$id)->get();
-        return view('admin.mains-admin.annonces.edit',compact('annonce','annonceImages'));
+        $quartier=Quartier::all();
+        $ville=Ville::all();
+        return view('admin.mains-admin.annonces.edit',compact('annonce','annonceImages','ville','quartier'));
     }
     public function annonceUpdate(Request $request){
          $annonce_id=$request->id;
