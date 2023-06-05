@@ -51,11 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::get('/permission/{id?}', [UserController::class, 'PermissionShow'])->name('permission-show');
     Route::post('/permission/{id?}', [UserController::class, 'PermissionUpdate'])->name('permission-update');
 
-    Route::get('/villes', function () {
-        return view('admin.mains-admin.villes');
-    });
-
-//gestion annonces
+    //gestion annonces
     Route::get('/annonces', [AnnonceController::class, 'annonces'])->name('annonces-list');
     Route::get('/annonces/add', [AnnonceController::class, 'ShowAddAnnonce'])->name('show-annonce-add');
     Route::post('/annonces/add', [AnnonceController::class, 'AnnonceAdd'])->name('annonce-add');
@@ -65,7 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::get('/annonces/delete/{id?}', [AnnonceController::class, 'deleteannonce'])->name('annonce-delete');
     Route::get('/annoncesimages/delete/{id?}', [AnnonceController::class, 'deleteimages'])->name('images-delete');
  
-//gestion TypeAnnonce
+    //gestion TypeAnnonce
     Route::get('/Typeannonce', [TypeAnnonceController::class, 'Typeannonce'])->name('typeannonce-list');
     Route::get('/Typeannonce/add', [TypeAnnonceController::class, 'ShowAddType'])->name('show-type-add');
     Route::post('/Typeannonce/add', [TypeAnnonceController::class, 'TypeAdd'])->name('type-add');
@@ -75,6 +71,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::get('/locateurs', function () {
         return view('admin.mains-admin.locateurs.list');
     })->name('locateurs');
+
+    Route::get('/villes', function () {
+        return view('admin.mains-admin.villes');
+    });
 });
 
 Route::get('/', function () {
