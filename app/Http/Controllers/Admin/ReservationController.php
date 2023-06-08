@@ -19,6 +19,12 @@ class ReservationController extends Controller
         return view('admin.mains-admin.reservation.add',compact('annonce'));
         }
         public function reservationAdd(Request $request){
+          $validated = $request->validate([
+            'id_promoteur' =>'required',
+            'id_client' => 'required',
+            'id_annonce' => 'required',
+            'Date' => 'required',
+        ]);
           Reservation::insert([
                 'id_promoteur'=>$request->id_promoteur, 
                 'id_client'=>$request->id_client, 

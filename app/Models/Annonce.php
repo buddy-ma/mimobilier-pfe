@@ -24,4 +24,8 @@ class Annonce extends Model
     {
         return $this->hasOne(Quartier::class, 'id', 'id_quartier');
     }
+    public function images()
+    {
+        return $this->hasMany('App\Models\AnnonceImage', 'annonce_id');
+    }
 }

@@ -20,10 +20,16 @@ h1,
                 <div class="col-md-6">
                     <label for="titre">promoteur de réservation</label>
                     <input type="text" class="form-control" name="id_promoteur" placeholder="promoteur de réservation">
+                    @error('id_promoteur')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-6">
                     <label for="id_client">Réservateur</label>
                     <input type="text" class="form-control" name="id_client" placeholder="reservateur">
+                    @error('id_promoteur')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
             </div>
             <br>
@@ -36,10 +42,16 @@ h1,
                         <option value="{{$item->id}}">{{$item->Titre}}</option>
                         @endforeach
                     </select>
+                    @error('id_annonce')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-6">
                     <label for="Date">Date de réservation</label>
                     <input type="datetime-local" class="form-control" name="Date">
+                    @error('Date')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
             </div>
             <br>

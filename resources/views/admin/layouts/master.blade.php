@@ -38,38 +38,41 @@
     @include('admin.layouts.footer-scripts')
 
     @if (Session::has('message'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Good Job...',
-                text: '{{ session('message') }}',
-            })
-        </script>
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Good Job...',
+        text: '{{ session('
+        message ') }}',
+    })
+    </script>
     @elseif(Session::has('error'))
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: '{{ session('error') }}',
-            })
-        </script>
+    <script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '{{ session('
+        error ') }}',
+    })
+    </script>
     @elseif(Session::has('success'))
-        <script>
-            Swal.fire({
-                icon: 'success',
-                title: 'Success...',
-                text: '{{ session('success') }}',
-            })
-        </script>
+    <script>
+    Swal.fire({
+        icon: 'success',
+        title: 'Success...',
+        text: '{{ session('
+        success ') }}',
+    })
+    </script>
     @endif
     <script>
-        window.addEventListener('swal:modal', event => {
-            new swal({
-                title: event.detail.message,
-                text: event.detail.text,
-                icon: event.detail.type,
-            })
-        });
+    window.addEventListener('swal:modal', event => {
+        new swal({
+            title: event.detail.message,
+            text: event.detail.text,
+            icon: event.detail.type,
+        })
+    });
     </script>
 </body>
 

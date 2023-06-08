@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\LocateurController;
 use App\Http\Controllers\Admin\TypeAnnonceController;
 use App\Http\Controllers\Admin\AnnonceController;
 use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\PaiementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,7 +79,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::post('/Reservation/{id?}', [ReservationController::class, 'ReservationUpdate'])->name('reservation-update');
     Route::get('/deleteReservation/{id?}', [ReservationController::class, 'deletereservation'])->name('reservation-delete');
     
-    
+     // gestion  paiements 
+     Route::get('/paiement', [PaiementController::class, 'paiements'])->name('paiement-list');
+     Route::get('/paiement/add', [PaiementController::class, 'ShowAddpaiement'])->name('show-paiement-add');
+     Route::post('/paiement/add', [PaiementController::class, 'paiementAdd'])->name('paiement-add');
+     Route::get('/paiement/{id?}', [PaiementController::class, 'paiementShow'])->name('paiement-show');
+     Route::post('/paiement/{id?}', [PaiementController::class, 'paiementUpdate'])->name('paiement-update');
+     Route::get('/deletepaiement/{id?}', [PaiementController::class, 'deletepaiment'])->name('paiement-delete');
+     
     
     Route::get('/locateurs', function () {
         return view('admin.mains-admin.locateurs.list');

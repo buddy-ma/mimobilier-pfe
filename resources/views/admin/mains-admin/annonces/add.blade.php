@@ -21,6 +21,9 @@ h1,
                 <div class="col-md-6">
                     <input type="file" class="custom-file-input" name="images[]" id="image" multiple="">
                     <label class="custom-file-label" for="images">Choisire Images</label>
+                    @error('images')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-6" id="previewContainer">
                     <!-- <img src="" id="showImage" width="100px" height="100px" alt=""> -->
@@ -30,6 +33,9 @@ h1,
                 <div class="col-md-4">
                     <label for="titre">Titre annonce</label>
                     <input type="text" class="form-control" name="Titre" placeholder="titre annonce">
+                    @error('Titre')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Type annonce</label>
@@ -39,10 +45,16 @@ h1,
                         <option value="{{ $item->id }}">{{ $item->Titre }}</option>
                         @endforeach
                     </select>
+                    @error('type_id')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-4">
                     <label for="id_promoteur">promoteur de l'annonce</label>
                     <input type="text" class="form-control" name="id_promoteur" placeholder="promoteur">
+                    @error('id_promoteur')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
             </div>
             <br>
@@ -55,6 +67,9 @@ h1,
                         <option value="{{ $item->id }}">{{ $item->title }}</option>
                         @endforeach
                     </select>
+                    @error('id_ville')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Quartier annonce</label>
@@ -64,10 +79,16 @@ h1,
                         <option value="{{ $item->id }}">{{ $item->title }}</option>
                         @endforeach
                     </select>
+                    @error('id_quartier')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-4">
                     <label for="Adresse">Adresse annonce</label>
                     <input type="text" class="form-control" name="Adresse" placeholder="Adresse">
+                    @error('Adresse')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
             </div>
             <br>
@@ -75,14 +96,23 @@ h1,
                 <div class="col-md-4">
                     <label for="extras">Extras annonce</label>
                     <input type="text" class="form-control" name="extras" placeholder="extras">
+                    @error('extras')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-4">
                     <label for="Position">Position</label>
                     <input type="text" class="form-control" name="Position" placeholder="Position">
+                    @error('Position')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-4">
                     <label for="surface">surface</label>
                     <input type="text" class="form-control" name="surface" placeholder="surface">
+                    @error('surface')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
             </div>
             <br>
@@ -90,10 +120,16 @@ h1,
                 <div class="col-md-4">
                     <label for="nbr_chambres">nombre chambres</label>
                     <input type="text" class="form-control" name="nbr_chambres" placeholder="nombre chambres">
+                    @error('nbr_chambres')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-4">
                     <label for="prix">prix</label>
                     <input type="text" class="form-control" name="prix" placeholder="prix">
+                    @error('prix')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">Status annonce</label>
@@ -102,6 +138,9 @@ h1,
                         <option value="1">Active</option>
                         <option value="0">Desactive</option>
                     </select>
+                    @error('Status')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
             </div>
             <br>
@@ -113,6 +152,9 @@ h1,
                         <option value="1">disponible</option>
                         <option value="0">non</option>
                     </select>
+                    @error('is_dispo')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-4">
                     <label class="form-label">sponsorisation</label>
@@ -121,10 +163,16 @@ h1,
                         <option value="1">sponsorisé</option>
                         <option value="0">non</option>
                     </select>
+                    @error('is_sponsorised')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
                 <div class="col-md-4">
-                    <label for="Status">vues</label>
+                    <label for="vues">vues</label>
                     <input type="text" class="form-control" name="vues" placeholder="vues">
+                    @error('vues')
+                    <span class="text-danger">{{$message}}</span>
+                    @enderror
                 </div>
             </div>
         </div>

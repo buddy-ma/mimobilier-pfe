@@ -16,6 +16,9 @@ class TypeAnnonceController extends Controller
         return view('admin.mains-admin.TypeAnnonce.add');
     }
     public function TypeAdd(Request $request ){
+        $validated = $request->validate([
+            'Titre' =>'required',
+        ]);
         TypeAnnonce::create([
             'Titre'=>$request->Titre,
         ]);

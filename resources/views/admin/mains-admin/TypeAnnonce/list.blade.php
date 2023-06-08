@@ -56,6 +56,10 @@ h1,
                         <label for="titre">Titre Type</label>
                         <input type="text" class="form-control" name="Titre" placeholder="titre type annonce">
                         <br>
+                        @error('Titre')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
+                        <br><br>
                         <input type="submit" class="btn btn-rounded btn-primary" value="Ajouter Type">
                     </form>
                 </div>

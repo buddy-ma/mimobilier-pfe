@@ -25,6 +25,24 @@ class AnnonceController extends Controller
         return view('admin.mains-admin.annonces.add',compact('Type','ville','quartier'));
     }
     public function AnnonceAdd(Request $request){
+      $validated = $request->validate([
+        'image' =>'required',
+        'Titre' => 'required',
+        'type_id' => 'required',
+        'id_promoteur' => 'required',
+        'id_ville' => 'required',
+        'id_quartier' => 'required',
+        'Adresse' => 'required',
+        'extras' => 'required',
+        'Position' => 'required',
+        'surface' => 'required',
+        'nbr_chambres' => 'required',
+        'prix' => 'required',
+        'Status' => 'required',
+        'is_dispo' => 'required',
+        'is_sponsorised' => 'required',
+        'vues' => 'required',
+    ]);
       $annonce_id=annonce::insertGetId([
             'Titre'=>$request->Titre, 
             'type_id'=>$request->type_id, 
@@ -109,7 +127,7 @@ class AnnonceController extends Controller
         $annonce=annonce::findOrFail($id);
         $images=AnnonceImage::where('annonce_id',$annonce)->get();
         foreach($images as $imgs){
-        unlink(storage_path('upload/annonces/'.$imgs->image));
+        unlink($imgs->image);
         AnnonceImage::findOrfail($imgs)->delete();
       }
         annonce::findOrFail($id)->delete();
@@ -118,7 +136,7 @@ class AnnonceController extends Controller
       }
     public function deleteImages($id){
         $oldimg=AnnonceImage::findOrFail($id);
-        unlink(storage_path('upload/annonces/'.$oldimg->image));
+        unlink($oldimg->image);
         AnnonceImage::findOrFail($id)->delete();
         
         return Redirect::to("admin/annonces")->with('success', 'les images sont supprimé avec succes');
