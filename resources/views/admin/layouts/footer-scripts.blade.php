@@ -120,6 +120,7 @@
       });
   </script>
   @yield('js')
+  @livewireScripts
   <!-- Simplebar JS -->
   <script src="{{ URL::asset('admin_assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
   <!-- Custom js-->

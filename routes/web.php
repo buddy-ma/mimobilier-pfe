@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\StatisticsController;
-
+use App\Http\Controllers\Admin\LocateurController;
+use App\Http\Controllers\Admin\TypeAnnonceController;
+use App\Http\Controllers\Admin\AnnonceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,11 +36,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
 
     //user
     Route::get('/user', [UserController::class, 'User'])->name('user-list');
-    Route::get('/user/add', [UserController::class, 'ShowAddUser'])->name('show-user-add');
-    Route::post('/user/add', [UserController::class, 'UserAdd'])->name('user-add');
-    Route::get('/user/{id?}', [UserController::class, 'UserShow'])->name('user-show');
-    Route::post('/user/{id?}', [UserController::class, 'UserUpdate'])->name('user-update');
-
+   
     //role
     Route::get('/role', [UserController::class, 'Role'])->name('role-list');
     Route::get('/role/add', [UserController::class, 'ShowAddRole'])->name('show-role-add');
@@ -52,6 +50,31 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::post('/permission/add', [UserController::class, 'PermissionAdd'])->name('permission-add');
     Route::get('/permission/{id?}', [UserController::class, 'PermissionShow'])->name('permission-show');
     Route::post('/permission/{id?}', [UserController::class, 'PermissionUpdate'])->name('permission-update');
+
+    //gestion annonces
+    Route::get('/annonces', [AnnonceController::class, 'annonces'])->name('annonces-list');
+    Route::get('/annonces/add', [AnnonceController::class, 'ShowAddAnnonce'])->name('show-annonce-add');
+    Route::post('/annonces/add', [AnnonceController::class, 'AnnonceAdd'])->name('annonce-add');
+    Route::get('/annonces/{id?}', [AnnonceController::class, 'AnnonceShow'])->name('annonce-show');
+    Route::post('/annonces', [AnnonceController::class, 'annonceUpdate'])->name('annonce-update');
+    Route::post('/annonceimages', [AnnonceController::class, 'annonceImagesUpdate'])->name('annonce-ImagesUpdate');
+    Route::get('/annonces/delete/{id?}', [AnnonceController::class, 'deleteannonce'])->name('annonce-delete');
+    Route::get('/annoncesimages/delete/{id?}', [AnnonceController::class, 'deleteimages'])->name('images-delete');
+ 
+    //gestion TypeAnnonce
+    Route::get('/Typeannonce', [TypeAnnonceController::class, 'Typeannonce'])->name('typeannonce-list');
+    Route::get('/Typeannonce/add', [TypeAnnonceController::class, 'ShowAddType'])->name('show-type-add');
+    Route::post('/Typeannonce/add', [TypeAnnonceController::class, 'TypeAdd'])->name('type-add');
+    Route::get('/Typeannonce/{id?}', [TypeAnnonceController::class, 'TypeShow'])->name('type-show');
+    Route::post('/Typeannonce/{id?}', [TypeAnnonceController::class, 'TypeUpdate'])->name('type-update');
+    Route::get('/deleteTypeannonce/{id?}', [TypeAnnonceController::class, 'deletetype'])->name('type-delete');
+    Route::get('/locateurs', function () {
+        return view('admin.mains-admin.locateurs.list');
+    })->name('locateurs');
+
+    Route::get('/villes', function () {
+        return view('admin.mains-admin.villes');
+    });
 });
 
 Route::get('/', function () {

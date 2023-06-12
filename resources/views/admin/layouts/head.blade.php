@@ -24,6 +24,7 @@
   <!---Icons css-->
   <link href="{{ URL::asset('admin_assets/css/icons.css') }}" rel="stylesheet" />
   @yield('css')
+  @livewireStyles
 
   <!-- Simplebar css -->
   <link rel="stylesheet" href="{{ URL::asset('admin_assets/plugins/simplebar/css/simplebar.css') }}">
