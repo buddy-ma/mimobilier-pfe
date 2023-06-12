@@ -85,5 +85,30 @@
                 </ul>
             </li>
         @endif()
+
+        @if (Auth::user()->hasAnyPermission(['annonce-list', 'annonce-create', 'annonce-edit', 'annonce-delete']))
+            <li class="slide mt-3">
+                <a class="side-menu__item" data-toggle="slide">
+                    <svg class="side-menu__icon" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24"
+                        width="24">
+                        <path d="M0 0h24v24H0V0z" fill="none"></path>
+                        <path
+                            d="M16.66 4.52l2.83 2.83-2.83 2.83-2.83-2.83 2.83-2.83M9 5v4H5V5h4m10 10v4h-4v-4h4M9 15v4H5v-4h4m7.66-13.31L11 7.34 16.66 13l5.66-5.66-5.66-5.65zM11 3H3v8h8V3zm10 10h-8v8h8v-8zm-10 0H3v8h8v-8z">
+                        </path>
+                    </svg>
+                    <span class="side-menu__label">Annonces</span><i class="angle fa fa-angle-right"></i>
+                </a>
+                <ul class="slide-menu">
+                    <li>
+                        @can('product-list')
+                            <a class="slide-item" href="{{ url('/admin/annonces') }}">Tous les Annonces</a>
+                        @endcan
+                        @can('product-create')
+                            <a class="slide-item" href="{{ url('/admin/annonces/add') }}">Ajouter une annonce</a>
+                        @endcan
+                    </li>
+                </ul>
+            </li>
+        @endif
     </ul>
 </aside>
