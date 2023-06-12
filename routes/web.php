@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\StatisticsController;
 use App\Http\Controllers\Admin\LocateurController;
 use App\Http\Controllers\Admin\TypeAnnonceController;
 use App\Http\Controllers\Admin\AnnonceController;
+use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\PaiementController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,7 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::post('/annonceimages', [AnnonceController::class, 'annonceImagesUpdate'])->name('annonce-ImagesUpdate');
     Route::get('/annonces/delete/{id?}', [AnnonceController::class, 'deleteannonce'])->name('annonce-delete');
     Route::get('/annoncesimages/delete/{id?}', [AnnonceController::class, 'deleteimages'])->name('images-delete');
- 
+
     //gestion TypeAnnonce
     Route::get('/Typeannonce', [TypeAnnonceController::class, 'Typeannonce'])->name('typeannonce-list');
     Route::get('/Typeannonce/add', [TypeAnnonceController::class, 'ShowAddType'])->name('show-type-add');
@@ -68,6 +70,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::get('/Typeannonce/{id?}', [TypeAnnonceController::class, 'TypeShow'])->name('type-show');
     Route::post('/Typeannonce/{id?}', [TypeAnnonceController::class, 'TypeUpdate'])->name('type-update');
     Route::get('/deleteTypeannonce/{id?}', [TypeAnnonceController::class, 'deletetype'])->name('type-delete');
+   
+    // gestion  reservation 
+    Route::get('/Reservation', [ReservationController::class, 'reservations'])->name('reservation-list');
+    Route::get('/Reservation/add', [ReservationController::class, 'ShowAddReservation'])->name('show-reservation-add');
+    Route::post('/Reservation/add', [ReservationController::class, 'reservationAdd'])->name('reservation-add');
+    Route::get('/Reservation/{id?}', [ReservationController::class, 'reservationShow'])->name('reservation-show');
+    Route::post('/Reservation/{id?}', [ReservationController::class, 'ReservationUpdate'])->name('reservation-update');
+    Route::get('/deleteReservation/{id?}', [ReservationController::class, 'deletereservation'])->name('reservation-delete');
+    
+     // gestion  paiements 
+     Route::get('/paiement', [PaiementController::class, 'paiements'])->name('paiement-list');
+     Route::get('/paiement/add', [PaiementController::class, 'ShowAddpaiement'])->name('show-paiement-add');
+     Route::post('/paiement/add', [PaiementController::class, 'paiementAdd'])->name('paiement-add');
+     Route::get('/paiement/{id?}', [PaiementController::class, 'paiementShow'])->name('paiement-show');
+     Route::post('/paiement/{id?}', [PaiementController::class, 'paiementUpdate'])->name('paiement-update');
+     Route::get('/deletepaiement/{id?}', [PaiementController::class, 'deletepaiment'])->name('paiement-delete');
+     
+    
     Route::get('/locateurs', function () {
         return view('admin.mains-admin.locateurs.list');
     })->name('locateurs');
@@ -75,6 +95,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::get('/villes', function () {
         return view('admin.mains-admin.villes');
     });
+
 });
 
 Route::get('/', function () {

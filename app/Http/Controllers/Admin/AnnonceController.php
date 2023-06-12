@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Annonce;
 use App\Models\AnnonceImage;
 use App\Models\TypeAnnonce;
+use App\Models\Ville;
+use App\Models\Quartier;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use Image;
@@ -14,14 +16,33 @@ class AnnonceController extends Controller
 {
     public function annonces(){
     $annonces=Annonce::all();
-    $images= AnnonceImage::all();
     return view('admin.mains-admin.annonces.list',compact('annonces'));
     }
     public function ShowAddAnnonce(){
         $Type=TypeAnnonce::all();
-        return view('admin.mains-admin.annonces.add',compact('Type'));
+        $quartier=Quartier::all();
+        $ville=Ville::all();
+        return view('admin.mains-admin.annonces.add',compact('Type','ville','quartier'));
     }
     public function AnnonceAdd(Request $request){
+      $validated = $request->validate([
+        'image' =>'required',
+        'Titre' => 'required',
+        'type_id' => 'required',
+        'id_promoteur' => 'required',
+        'id_ville' => 'required',
+        'id_quartier' => 'required',
+        'Adresse' => 'required',
+        'extras' => 'required',
+        'Position' => 'required',
+        'surface' => 'required',
+        'nbr_chambres' => 'required',
+        'prix' => 'required',
+        'Status' => 'required',
+        'is_dispo' => 'required',
+        'is_sponsorised' => 'required',
+        'vues' => 'required',
+    ]);
       $annonce_id=annonce::insertGetId([
             'Titre'=>$request->Titre, 
             'type_id'=>$request->type_id, 
@@ -58,7 +79,9 @@ class AnnonceController extends Controller
     public function AnnonceShow($id){
         $annonce=Annonce::find($id);
         $annonceImages=AnnonceImage::where('annonce_id',$id)->get();
-        return view('admin.mains-admin.annonces.edit',compact('annonce','annonceImages'));
+        $quartier=Quartier::all();
+        $ville=Ville::all();
+        return view('admin.mains-admin.annonces.edit',compact('annonce','annonceImages','ville','quartier'));
     }
     public function annonceUpdate(Request $request){
          $annonce_id=$request->id;
@@ -104,7 +127,7 @@ class AnnonceController extends Controller
         $annonce=annonce::findOrFail($id);
         $images=AnnonceImage::where('annonce_id',$annonce)->get();
         foreach($images as $imgs){
-        unlink(storage_path('upload/annonces/'.$imgs->image));
+        unlink($imgs->image);
         AnnonceImage::findOrfail($imgs)->delete();
       }
         annonce::findOrFail($id)->delete();
@@ -113,7 +136,7 @@ class AnnonceController extends Controller
       }
     public function deleteImages($id){
         $oldimg=AnnonceImage::findOrFail($id);
-        unlink(storage_path('upload/annonces/'.$oldimg->image));
+        unlink($oldimg->image);
         AnnonceImage::findOrFail($id)->delete();
         
         return Redirect::to("admin/annonces")->with('success', 'les images sont supprimé avec succes');

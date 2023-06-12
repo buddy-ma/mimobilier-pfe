@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string('surface',255);
             $table->integer('nbr_chambres');
             $table->biginteger('prix');
-            $table->tinyInteger('Status')->default(1);
-            $table->tinyInteger('is_dispo')->default(1);
-            $table->tinyInteger('is_sponsorised')->default(0);
+            $table->boolean('Status')->default(1);
+            $table->boolean('is_dispo')->default(1);
+            $table->boolean('is_sponsorised')->default(0);
             $table->string('vues');
             $table->timestamps();
 
