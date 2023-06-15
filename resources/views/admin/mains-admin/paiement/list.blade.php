@@ -27,6 +27,7 @@ h1,
                     <th>montant de paiement</th>
                     <th>date de paiement</th>
                     <th>photo_virement</th>
+                    <th>actions</th>
                 </tr>
             </thead>
             <tbody>
