@@ -8,7 +8,6 @@ class Annonce extends Model
     protected $fillable = [
 
         'Titre', 'type_id', 'id_promoteur', 'id_ville',
-        'Titre', 'type_id', 'id_promoteur', 'id_ville',
         'id_quartier', 'Adresse','extras','Position','surface',
         'nbr_chambres','prix','Status','is_dispo','is_sponsorised','vues'
     ];

@@ -97,6 +97,27 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     });
 
 });
+Route::group(['prefix' => 'promoteur'], function () {
+        //gestion annonces
+        Route::get('/annonces', [AnnoncepromoController::class, 'annonces'])->name('annoncespromo-list');
+        Route::get('/annonces/add', [AnnoncepromoController::class, 'ShowAddAnnonce'])->name('show-annoncepromo-add');
+        Route::post('/annonces/add', [AnnoncepromoController::class, 'AnnonceAdd'])->name('annoncepromo-add');
+        Route::get('/annonces/{id?}', [AnnoncepromoController::class, 'AnnonceShow'])->name('annoncepromo-show');
+        Route::post('/annonces', [AnnoncepromoController::class, 'annonceUpdate'])->name('annoncepromo-update');
+        Route::post('/annonceimages', [AnnoncepromoController::class, 'annonceImagesUpdate'])->name('annoncepromo-ImagesUpdate');
+        Route::get('/annonces/delete/{id?}', [AnnoncepromoController::class, 'deleteannonce'])->name('annoncepromo-delete');
+        Route::get('/annoncesimages/delete/{id?}', [AnnoncepromoController::class, 'deleteimages'])->name('imagespromo-delete');
+
+
+        // gestion  paiements 
+     Route::get('/paiement', [PaiementpromoController::class, 'paiements'])->name('paiementpromo-list');
+     Route::get('/paiement/add', [PaiementpromoController::class, 'ShowAddpaiement'])->name('show-paiementpromo-add');
+     Route::post('/paiement/add', [PaiementpromoController::class, 'paiementAdd'])->name('paiementpromo-add');
+     Route::get('/paiement/{id?}', [PaiementpromoController::class, 'paiementShow'])->name('paiementpromo-show');
+     Route::post('/paiement/{id?}', [PaiementpromoController::class, 'paiementUpdate'])->name('paiementpromo-update');
+     Route::get('/deletepaiement/{id?}', [PaiementpromoController::class, 'deletepaiment'])->name('paiementpromo-delete');
+     
+});
 
 Route::get('/', function () {
     return view('welcome');
