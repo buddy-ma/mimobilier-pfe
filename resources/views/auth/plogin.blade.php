@@ -19,12 +19,11 @@
                                 </div>
                             @endif
                             <div class="card">
-
                                 <div class="text-center title-style " style="margin-bottom: 50px">
-                                    <h1>Espace Admin</h1>
+                                    <h1>Espace Promoteur</h1>
                                 </div>
                                 <div class="card-body">
-                                    <form method="POST" action="{{ route('king-login') }}">
+                                    <form method="POST" action="{{ route('promoteur-login') }}">
                                         @csrf
                                         <div class="input-group mb-4">
                                             <div class="input-group-prepend">

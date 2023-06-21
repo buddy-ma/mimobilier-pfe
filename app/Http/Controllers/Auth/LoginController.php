@@ -32,6 +32,11 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+    public function showPromoteurLoginForm()
+    {
+        return view('auth.plogin');
+    }
+
     /**
      * Where to redirect users after login.
      *
