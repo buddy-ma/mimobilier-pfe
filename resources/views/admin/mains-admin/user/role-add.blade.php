@@ -1,22 +1,22 @@
 @extends('admin.layouts.master')
 @section('css')
     <!-- INTERNAL File Uploads css -->
-    <link href="{{ URL::asset('assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('admin_assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
 
     <!-- INTERNAL File Uploads css-->
-    <link href="{{ URL::asset('assets/plugins/fileupload/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('admin_assets/plugins/fileupload/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
 
     <!--INTERNAL Select2 css -->
-    <link href="{{ URL::asset('assets/plugins/select2/select2.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('admin_assets/plugins/select2/select2.min.css') }}" rel="stylesheet" />
 
     <!-- INTERNAL Mutipleselect css-->
-    <link rel="stylesheet" href="{{ URL::asset('assets/plugins/multipleselect/multiple-select.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('admin_assets/plugins/multipleselect/multiple-select.css') }}">
 
     <!-- INTERNAL Sumoselect css-->
-    <link rel="stylesheet" href="{{ URL::asset('assets/plugins/sumoselect/sumoselect.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('admin_assets/plugins/sumoselect/sumoselect.css') }}">
 
     <!-- INTERNAL multi css-->
-    <link rel="stylesheet" href="{{ URL::asset('assets/plugins/multi/multi.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('admin_assets/plugins/multi/multi.min.css') }}">
 @endsection
 @section('page-header')
     <!--Page header-->
@@ -99,34 +99,34 @@
 @endsection
 @section('js')
     <!-- INTERNAL Select2 js -->
-    <script src="{{ URL::asset('assets/plugins/select2/select2.full.min.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/select2.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/js/select2.js') }}"></script>
 
     <!-- INTERNAL Datepicker js -->
-    <script src="{{ URL::asset('assets/plugins/date-picker/date-picker.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/date-picker/jquery-ui.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/input-mask/jquery.maskedinput.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/date-picker/date-picker.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/date-picker/jquery-ui.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/input-mask/jquery.maskedinput.js') }}"></script>
 
     <!-- INTERNAL File-Uploads Js-->
-    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
 
     <!-- INTERNAL File uploads js -->
-    <script src="{{ URL::asset('assets/plugins/fileupload/js/dropify.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/filupload.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/fileupload/js/dropify.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/js/filupload.js') }}"></script>
 
     <!-- INTERNAL Multipleselect js -->
-    <script src="{{ URL::asset('assets/plugins/multipleselect/multiple-select.js') }}"></script>
-    <script src="{{ URL::asset('assets/plugins/multipleselect/multi-select.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/multipleselect/multiple-select.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/multipleselect/multi-select.js') }}"></script>
 
     <!--INTERNAL Sumoselect js-->
-    <script src="{{ URL::asset('assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
 
     <!--INTERNAL Form Advanced Element -->
-    <script src="{{ URL::asset('assets/js/formelementadvnced.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
-    <script src="{{ URL::asset('assets/js/file-upload.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/js/formelementadvnced.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/js/form-elements.js') }}"></script>
+    <script src="{{ URL::asset('admin_assets/js/file-upload.js') }}"></script>
 @endsection

@@ -31,8 +31,8 @@
 
   <script src="{{ asset('js/app.js') }}"></script>
 
-  <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
-  <script src="{{ asset('assets/js/jquery.signature.js') }}"></script>
+  <script src="{{ asset('admin_assets/js/jquery-ui.min.js') }}"></script>
+  <script src="{{ asset('admin_assets/js/jquery.signature.js') }}"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

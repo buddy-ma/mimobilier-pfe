@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AnnonceController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\Admin\StatisticsController;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\TypeAnnonceController;
 use App\Http\Controllers\Admin\StatisticspromoController;
+use App\Http\Controllers\Promoteur\AnnoncepromoController;
+use App\Http\Controllers\Promoteur\PaiementpromoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -95,6 +98,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::post('/paiement/{id?}', [PaiementController::class, 'paiementUpdate'])->name('paiement-update');
     Route::get('/deletepaiement/{id?}', [PaiementController::class, 'deletepaiment'])->name('paiement-delete');
 
+    Route::prefix('blogs')->group(function () {
+        Route::get('/', [BlogController::class, 'list'])->name('blog-list');
+        Route::get('/new', [BlogController::class, 'new'])->name('blog-new');
+        Route::get('/decouvrez', [BlogController::class, 'decouvrez'])->name('blog-decouvrez');
+        Route::get('/decouvrez/new', [BlogController::class, 'decouvrezNew'])->name('blog-decouvrez-new');
+        Route::get('/add', [BlogController::class, 'add'])->name('show-blog-add');
+        Route::post('/add', [BlogController::class, 'store'])->name('blog-add');
+        Route::post('/add/upload', [BlogController::class, 'upload'])->name('ckeditor.upload');
+
+        Route::get('/update/{id?}', [BlogController::class, 'update'])->name('show-blog-update');
+        Route::post('/{id?}', [BlogController::class, 'edit'])->name('blog-update');
+        Route::delete('/delete/{id?}', [BlogController::class, 'delete'])->name('blog-delete');
+        Route::delete('/restore/{id?}', [BlogController::class, 'restore'])->name('blog-restore');
+        Route::get('/approve/{id?}', [BlogController::class, 'approve'])->name('show-blog-approve');
+        Route::get('/changeStatus', [BlogController::class, 'changeStatus']);
+        Route::get('/show/{id?}', [BlogController::class, 'show'])->name('show-blog-show');
+    });
+
 
     Route::get('/locateurs', function () {
         return view('admin.mains-admin.locateurs.list');
@@ -104,6 +125,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
         return view('admin.mains-admin.villes');
     });
 });
+
 Route::group(['prefix' => 'promoteur'], function () {
     Route::get('/dashboard', [StatisticspromoController::class, 'Dashboard'])->name('promoteur-dashboard');
     //gestion annonces
