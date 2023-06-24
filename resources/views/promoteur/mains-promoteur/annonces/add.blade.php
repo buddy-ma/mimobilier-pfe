@@ -53,7 +53,7 @@ h1,
                     <label class="form-label">promoteur de l'annonce</label>
                     <select name="id_promoteur" class="form-control">
                         <option value="">Select promoteur</option>
-                        <option value="{{Auth()->id}}">{{Auth()->name}}</option>
+                        <option value="{{$user[0]->id}}">{{$user[0]->firstname}}</option>
                     </select>
                     @error('id_promoteur')
                     <span class="text-danger">{{$message}}</span>

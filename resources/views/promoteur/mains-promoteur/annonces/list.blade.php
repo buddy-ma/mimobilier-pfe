@@ -15,7 +15,7 @@ h1,
 @section('page-header')
 <div class="page-header">
     <h4 class="justify-content-center">Tous les annonces</h4>
-    <a class="btn btn-primary float-right ml-auto" href="{{ route('show-annonce-add') }}"> add annonce</a>
+    <a class="btn btn-primary float-right ml-auto" href="{{ route('show-annoncepromo-add') }}"> add annonce</a>
 </div>
 @endsection
 @section('content')

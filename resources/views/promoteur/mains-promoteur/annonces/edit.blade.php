@@ -33,8 +33,8 @@ h1,
                     <label class="form-label">promoteur de l'annonce</label>
                     <select name="id_promoteur" class="form-control">
                         <option value="">Select promoteur</option>
-                        <option value="{{ Auth()->id }}" {{Auth()->id==$annonce->id ?'selected':''}}>
-                            {{ Auth()->name }}</option>
+                        <option value="{{ $user[0]->id }}" {{$user[0]->id==$annonce->id_promoteur?'selected':''}}>
+                            {{ $user[0]->firstname }}</option>
                     </select>
                 </div>
             </div>
