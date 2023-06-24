@@ -16,7 +16,7 @@ use Image;
 class AnnoncepromoController extends Controller
 {
     public function annonces(){
-        $annonces=Annonce::where('id_promoteur',auth()->id())->get();
+        $annonces=Annonce::where('id_promoteur',auth::user()->id)->get();
         return view('promoteur.mains-promoteur.annonces.list',compact('annonces'));
         }
         public function ShowAddAnnonce(){
@@ -83,7 +83,7 @@ class AnnoncepromoController extends Controller
             $annonceImages=AnnonceImage::where('annonce_id',$id)->get();
             $quartier=Quartier::all();
             $ville=Ville::all();
-            $user=User::where('id',auth()->id())->get();
+            $user=User::where('id',auth::user()->id)->get();
             return view('promoteur.mains-promoteur.annonces.edit',compact('annonce','annonceImages','ville','quartier','user'));
         }
         public function annonceUpdate(Request $request){

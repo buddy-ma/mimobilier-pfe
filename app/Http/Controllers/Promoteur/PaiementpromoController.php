@@ -12,7 +12,7 @@ use Image;
 class PaiementpromoController extends Controller
 {
     public function paiements(){
-        $paiement=Paiement::where('id_client',Auth()->id)->get();
+        $paiement=Paiement::where('id_client',Auth::user()->id)->get();
         return view('promoteur.mains-promoteur.paiement.list',compact('paiement'));
         }
         public function ShowAddpaiement(){
