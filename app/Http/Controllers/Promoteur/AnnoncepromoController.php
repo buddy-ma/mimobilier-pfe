@@ -16,11 +16,11 @@ use Image;
 class AnnoncepromoController extends Controller
 {
     public function annonces(){
-        $annonces=Annonce::where('id_promoteur',Auth()->id)->get();
+        $annonces=Annonce::where('id_promoteur',auth()->id())->get();
         return view('promoteur.mains-promoteur.annonces.list',compact('annonces'));
         }
         public function ShowAddAnnonce(){
-            $user=User::where('id',auth()->id)->get();
+            $user=User::where('id',auth()->id())->get();
             $Type=TypeAnnonce::all();
             $quartier=Quartier::all();
             $ville=Ville::all();
@@ -28,7 +28,7 @@ class AnnoncepromoController extends Controller
         }
         public function AnnonceAdd(Request $request){
           $validated = $request->validate([
-            'image' =>'required',
+            'images' =>'required',
             'Titre' => 'required',
             'type_id' => 'required',
             'id_promoteur' => 'required',
@@ -83,7 +83,8 @@ class AnnoncepromoController extends Controller
             $annonceImages=AnnonceImage::where('annonce_id',$id)->get();
             $quartier=Quartier::all();
             $ville=Ville::all();
-            return view('promoteur.mains-promoteur.annonces.edit',compact('annonce','annonceImages','ville','quartier'));
+            $user=User::where('id',auth()->id())->get();
+            return view('promoteur.mains-promoteur.annonces.edit',compact('annonce','annonceImages','ville','quartier','user'));
         }
         public function annonceUpdate(Request $request){
              $annonce_id=$request->id;
