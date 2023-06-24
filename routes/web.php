@@ -11,9 +11,6 @@ use App\Http\Controllers\Admin\PaiementController;
 use App\Http\Controllers\Admin\StatisticsController;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\TypeAnnonceController;
-use App\Http\Controllers\Admin\AnnonceController;
-use App\Http\Controllers\Admin\ReservationController;
-use App\Http\Controllers\Admin\PaiementController;
 use App\Http\Controllers\Promoteur\AnnoncepromoController;
 use App\Http\Controllers\Promoteur\PaiementpromoController;
 /*
