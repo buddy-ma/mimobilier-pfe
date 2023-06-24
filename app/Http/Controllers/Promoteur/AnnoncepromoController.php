@@ -83,8 +83,7 @@ class AnnoncepromoController extends Controller
             $annonceImages=AnnonceImage::where('annonce_id',$id)->get();
             $quartier=Quartier::all();
             $ville=Ville::all();
-            $user=User::where('id',auth::user()->id)->get();
-            return view('promoteur.mains-promoteur.annonces.edit',compact('annonce','annonceImages','ville','quartier','user'));
+            return view('promoteur.mains-promoteur.annonces.edit',compact('annonce','annonceImages','ville','quartier'));
         }
         public function annonceUpdate(Request $request){
              $annonce_id=$request->id;
