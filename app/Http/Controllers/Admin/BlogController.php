@@ -38,8 +38,7 @@ class BlogController extends Controller
     public function add()
     {
         $categories = Categorie::with('children')->where('id', '!=', 9)->get();
-        $conseilscategories = ConseilCategory::get();
-        return view('admin.mains-admin.blogs.blog-add', ['categories' => $categories, 'conseilscategories' => $conseilscategories]);
+        return view('admin.mains-admin.blogs.blog-add', ['categories' => $categories]);
     }
 
     public function addDecouvrez()
@@ -93,7 +92,7 @@ class BlogController extends Controller
             $request->file('image')->move(public_path('images'), $filename);
             $blog->image = $filename;
         }
-        
+
         if ($request->hasFile('pdf')) {
             $filenamepdf = date('YmdHi') . $request->file('pdf')->getClientOriginalName();
             $request->file('pdf')->move(public_path('files'), $filenamepdf);

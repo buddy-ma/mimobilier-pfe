@@ -109,19 +109,6 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg">
-                                <div class="form-group">
-                                    <label>Conseils Categories*</label>
-                                    <select multiple="multiple" required name="conseilscategories[]" class="search-box">
-                                        @if ($conseilscategories)
-                                            @foreach ($conseilscategories as $cc)
-                                                <option value="{{ $cc->id }}">{{ $cc->title }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-lg">
