@@ -42,12 +42,6 @@
 
     @include('landing.index.catalogueConseils')
 
-    {{-- @include('landing.index.villes') --}}
-
-    @include('landing.index.catalogueConseilsMaroc')
-
-    {{-- @include('landing.index.ilsParlentDeNous') --}}
-
     <section class="featured portfolio bg-white rec-pro">
         <div class="container pt-3 pb-3">
             <div class="row">

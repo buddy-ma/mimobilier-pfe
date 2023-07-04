@@ -8,7 +8,6 @@ use App\Models\Blog;
 use App\Models\Categorie;
 use App\Models\ProductContact;
 use App\Models\Quartier;
-use App\Models\TypeAnnonce;
 use App\Models\Ville;
 use Illuminate\Http\Request;
 
@@ -21,21 +20,12 @@ class HomeController extends Controller
         $categoryConseils = Categorie::where('title', 'Conseils')->first();
         $conseils = $categoryConseils->blogs()->where('Status', 1)->where('approved', 1)->take(8)->get();
 
-        $categoryMaroc = Categorie::where('title', 'DecouvrezLeMaroc')->first();
-        $articlesMaroc = $categoryMaroc->blogs()->where('Status', 1)->where('approved', 1)->take(8)->get();
-
-        $citys = Ville::get();
-
         $villes = Ville::get();
         $quartiers = Quartier::get();
-        $types = TypeAnnonce::where('product_category_id', 1)->get();
-        $nbr_pieces = Annonce::where('product_category_id', 1)->max('nbr_chambres');
+        $nbr_pieces = Annonce::where('type_id', 1)->max('nbr_chambres');
 
         return view('home', [
             'conseils' => $conseils,
-            'articlesMaroc' => $articlesMaroc,
-            'citys' => $citys,
-            'types' => $types,
             'nbr_pieces' => $nbr_pieces,
             'products' => $products,
             'villes' => $villes,
@@ -57,15 +47,11 @@ class HomeController extends Controller
     {
         if ($request->category_id) {
             $products = Annonce::where('Status', 1)
-                ->whereIn('product_category_id', [1, 3])
+                ->whereIn('type_id', [1, 3])
                 ->when($request->ville, function ($q) use ($request) {
-                    $q->where('ville', $request->ville);
+                    $q->where('id_ville', $request->ville);
                 })->when($request->quartier, function ($q) use ($request) {
-                    $q->where('quartier', $request->quartier);
-                })->when($request->type_id, function ($q) use ($request) {
-                    $q->where('product_type_id', $request->type_id);
-                })->when($request->reference != '', function ($q) use ($request) {
-                    $q->where('reference', 'like', $request->reference)->whereIn('product_category_id', [1, 2, 3, 4]);
+                    $q->where('id_quartier', $request->quartier);
                 })->when($request->nbr_pieces, function ($q) use ($request) {
                     if ($request->nbr_pieces < 7) {
                         $q->where('nbr_chambres', '=', $request->nbr_pieces);
@@ -82,14 +68,12 @@ class HomeController extends Controller
         }
         $villes = Ville::get();
         $quartiers = Quartier::get();
-        $types = TypeAnnonce::get();
         $nbr_pieces = Annonce::where('type_id', 1)->max('nbr_chambres');
 
         return view('achat', [
             'products' => $products,
             'villes' => $villes,
             'quartiers' => $quartiers,
-            'types' => $types,
             'nbr_pieces' => $nbr_pieces,
             'category_id' => $request->category_id,
             'type_id' => $request->type_id,
@@ -108,15 +92,11 @@ class HomeController extends Controller
             $products = Annonce::query()
                 ->where('Status', 1)
                 ->when($request->category_id, function ($q) use ($request) {
-                    $q->where('product_category_id', $request->category_id);
-                })->when($request->type_id, function ($q) use ($request) {
-                    $q->where('product_type_id', $request->type_id);
-                })->when($request->reference, function ($q) use ($request) {
-                    $q->where('reference', 'like', $request->reference)->whereIn('product_category_id', [1, 2, 3, 4]);
+                    $q->where('type_id', $request->category_id);
                 })->when($request->ville, function ($q) use ($request) {
-                    $q->where('ville', 'like', $request->ville);
+                    $q->where('id_ville', $request->ville);
                 })->when($request->quartier, function ($q) use ($request) {
-                    $q->where('quartier', 'like', $request->quartier);
+                    $q->where('id_quartier', $request->quartier);
                 })->when($request->nbr_pieces, function ($q) use ($request) {
                     if ($request->nbr_pieces < 7) {
                         $q->where('nbr_chambres', '=', $request->nbr_pieces);
@@ -127,27 +107,24 @@ class HomeController extends Controller
                     $q->where('surface', '>', $request->surface_min);
                 })->when($request->prix_max, function ($q) use ($request) {
                     $q->where('prix', '<', $request->prix_max);
-                })
-                ->get();
+                })->get();
         } else {
             $products = Annonce::where([
                 'Status' => 1,
-                'product_category_id' => 2,
+                'type_id' => 2,
             ])->get();
         }
 
 
         $villes = Ville::get();
         $quartiers = Quartier::get();
-        $types = ProductType::where('product_category_id', 2)->get();
-        $nbr_pieces = Annonce::where('product_category_id', 2)->max('nbr_chambres');
+        $nbr_pieces = Annonce::where('type_id', 2)->max('nbr_chambres');
 
 
         return view('location', [
             'products' => $products,
             'villes' => $villes,
             'quartiers' => $quartiers,
-            'types' => $types,
             'nbr_pieces' => $nbr_pieces,
             'category_id' => $request->category_id,
             'type_id' => $request->type_id,
@@ -166,15 +143,11 @@ class HomeController extends Controller
             $products = Annonce::query()
                 ->where('Status', 1)
                 ->when($request->category_id, function ($q) use ($request) {
-                    $q->where('product_category_id', $request->category_id);
-                })->when($request->type_id, function ($q) use ($request) {
-                    $q->where('product_type_id', $request->type_id);
-                })->when($request->reference, function ($q) use ($request) {
-                    $q->where('reference', 'like', $request->reference)->whereIn('product_category_id', [1, 2, 3, 4]);
+                    $q->where('type_id', $request->category_id);
                 })->when($request->ville, function ($q) use ($request) {
-                    $q->where('ville', 'like', $request->ville);
+                    $q->where('id_ville', $request->ville);
                 })->when($request->quartier, function ($q) use ($request) {
-                    $q->where('quartier', 'like', $request->quartier);
+                    $q->where('id_quartier', $request->quartier);
                 })->when($request->nbr_pieces, function ($q) use ($request) {
                     if ($request->nbr_pieces < 7) {
                         $q->where('nbr_chambres', '=', $request->nbr_pieces);
@@ -185,29 +158,23 @@ class HomeController extends Controller
                     $q->where('surface', '>', $request->surface_min);
                 })->when($request->prix_max, function ($q) use ($request) {
                     $q->where('prix', '<', $request->prix_max);
-                })
-                ->get();
+                })->get();
         } else {
             $products = Annonce::where([
                 'Status' => 1,
-                'product_category_id' => 3,
+                'type_id' => 3,
             ])->get();
         }
 
 
         $villes = Ville::get();
         $quartiers = Quartier::get();
-        $types = ProductType::where('product_category_id', 3)->get();
-        $nbr_pieces = Annonce::where('product_category_id', 3)->max('nbr_chambres');
-        $promoteurs = Proprietaire::where('is_promoteur', 1)->get();
-
+        $nbr_pieces = Annonce::where('type_id', 3)->max('nbr_chambres');
 
         return view('immoneuf', [
             'products' => $products,
             'villes' => $villes,
             'quartiers' => $quartiers,
-            'types' => $types,
-            'promoteurs' => $promoteurs,
             'nbr_pieces' => $nbr_pieces,
             'category_id' => $request->category_id,
             'type_id' => $request->type_id,
@@ -226,15 +193,11 @@ class HomeController extends Controller
             $products = Annonce::query()
                 ->where('Status', 1)
                 ->when($request->category_id, function ($q) use ($request) {
-                    $q->where('product_category_id', $request->category_id);
-                })->when($request->type_id, function ($q) use ($request) {
-                    $q->where('product_type_id', $request->type_id);
-                })->when($request->reference, function ($q) use ($request) {
-                    $q->where('reference', 'like', $request->reference)->whereIn('product_category_id', [1, 2, 3, 4]);
+                    $q->where('type_id', $request->category_id);
                 })->when($request->ville, function ($q) use ($request) {
-                    $q->where('ville', 'like', $request->ville);
+                    $q->where('id_ville', $request->ville);
                 })->when($request->quartier, function ($q) use ($request) {
-                    $q->where('quartier', 'like', $request->quartier);
+                    $q->where('id_quartier', $request->quartier);
                 })->when($request->nbr_pieces, function ($q) use ($request) {
                     if ($request->nbr_pieces < 7) {
                         $q->where('nbr_chambres', '=', $request->nbr_pieces);
@@ -245,27 +208,24 @@ class HomeController extends Controller
                     $q->where('surface', '>', $request->surface_min);
                 })->when($request->prix_max, function ($q) use ($request) {
                     $q->where('prix', '<', $request->prix_max);
-                })
-                ->get();
+                })->get();
         } else {
             $products = Annonce::where([
                 'Status' => 1,
-                'product_category_id' => 4,
+                'type_id' => 4,
             ])->get();
         }
 
 
         $villes = Ville::get();
         $quartiers = Quartier::get();
-        $types = ProductType::where('product_category_id', 4)->get();
-        $nbr_pieces = Annonce::where('product_category_id', 4)->max('nbr_chambres');
+        $nbr_pieces = Annonce::where('type_id', 4)->max('nbr_chambres');
 
 
         return view('vacances', [
             'products' => $products,
             'villes' => $villes,
             'quartiers' => $quartiers,
-            'types' => $types,
             'nbr_pieces' => $nbr_pieces,
             'category_id' => $request->category_id,
             'type_id' => $request->type_id,
@@ -286,10 +246,7 @@ class HomeController extends Controller
             $type = Categorie::where('title', 'Conseils')->get();
             $conseils = $type[0]->blogs()->where('Status', 1)->where('approved', 1)->get();
 
-            $tags = $type[0]->blogs()->where('Status', 1)->where('approved', 1)->tags();
-
             return view('conseils', [
-                'tags' => $tags,
                 'conseils' => $conseils,
             ]);
         } else {
@@ -301,9 +258,7 @@ class HomeController extends Controller
                 ->orWhere('tags', 'like', '%' . $term . '%')
                 ->groupBy('blogs.id')
                 ->get();
-            $tags = $type[0]->blogs()->where('Status', 1)->where('approved', 1)->tags();
             return view('conseils', [
-                'tags' => $tags,
                 'conseils' => $conseils,
                 'term' => $term,
             ]);
@@ -315,36 +270,20 @@ class HomeController extends Controller
         $c = Categorie::where('title', 'Conseils')->first();
         $ids = $c->blogs()->pluck('blogs.id')->toArray();
         $searchInput = $request->searchInput;
-        if ($request->id == 0) {
-            $conseils = Blog::whereIn('blogs.id', $ids)
-                ->where(function ($q) use ($searchInput) {
-                    if ($searchInput != "") {
-                        $q->where('title', 'like', '%' . $searchInput . '%')
-                            ->orWhere('text', 'like', '%' . $searchInput . '%')
-                            ->orWhere('subtitle', 'like', '%' . $searchInput . '%')
-                            ->orWhere('tags', 'like', '%' . $searchInput . '%');
-                    }
-                })
-                ->where('Status', 1)->where('approved', 1)
-                ->get();
-        } else {
-            $conseils = $type->blogs()
-                ->whereIn('blogs.id', $ids)
-                ->where('Status', 1)->where('approved', 1)
-                ->where(function ($q) use ($searchInput) {
-                    if ($searchInput != "") {
-                        $q->where('title', 'like', '%' . $searchInput . '%')
-                            ->orWhere('text', 'like', '%' . $searchInput . '%')
-                            ->orWhere('subtitle', 'like', '%' . $searchInput . '%')
-                            ->orWhere('tags', 'like', '%' . $searchInput . '%');
-                    }
-                })
-                ->groupBy('blogs.id')
-                ->get();
-        }
+        $conseils = Blog::whereIn('blogs.id', $ids)
+            ->where(function ($q) use ($searchInput) {
+                if ($searchInput != "") {
+                    $q->where('title', 'like', '%' . $searchInput . '%')
+                        ->orWhere('text', 'like', '%' . $searchInput . '%')
+                        ->orWhere('subtitle', 'like', '%' . $searchInput . '%')
+                        ->orWhere('tags', 'like', '%' . $searchInput . '%');
+                }
+            })
+            ->where('Status', 1)->where('approved', 1)
+            ->get();
+
         return response()->json([
             'conseils' => $conseils,
-            'categoryConseils' => $categoryConseils
         ]);
     }
 
@@ -374,10 +313,10 @@ class HomeController extends Controller
             ->groupBy('blogs.id')
             ->get();
 
-        $achat = Annonce::where('Status', 1)->where('product_category_id', 1)->get()->take(5);
-        $location = Annonce::where('Status', 1)->where('product_category_id', 2)->get()->take(5);
-        $immoneuf = Annonce::where('Status', 1)->where('product_category_id', 3)->get()->take(5);
-        $vacances = Annonce::where('Status', 1)->where('product_category_id', 4)->get()->take(5);
+        $achat = Annonce::where('Status', 1)->where('type_id', 1)->get()->take(5);
+        $location = Annonce::where('Status', 1)->where('type_id', 2)->get()->take(5);
+        $immoneuf = Annonce::where('Status', 1)->where('type_id', 3)->get()->take(5);
+        $vacances = Annonce::where('Status', 1)->where('type_id', 4)->get()->take(5);
 
         return view('blogDetail', [
             'blog' => $blog,

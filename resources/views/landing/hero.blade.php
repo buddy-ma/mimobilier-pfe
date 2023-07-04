@@ -44,7 +44,7 @@
                                                             v-model="ville" class="select single-select mr-0">
                                                             <option value="">Villes</option>
                                                             @foreach ($villes as $vll)
-                                                                <option value="{{ $vll->title }}"
+                                                                <option value="{{ $vll->id }}"
                                                                     @if ($vll->title == $ville) selected @endif>
                                                                     {{ $vll->title }}
                                                                 </option>
@@ -59,7 +59,7 @@
                                                         <select name="quartier" v-if="results.length > 0"
                                                             class="select single-select mr-0">
                                                             <option value="">Quartiers</option>
-                                                            <option :value="result.title" v-for="result in results"
+                                                            <option :value="result.id" v-for="result in results"
                                                                 :key="result.id">@{{ result.title }}</option>
                                                         </select>
                                                         <select v-else name="quartier"
@@ -72,19 +72,6 @@
                                                             @endforeach --}}
                                                         </select>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-6 mb-md-4 px-xs-1">
-                                                <div class="rld-single-select">
-                                                    <select name="type_id" class="select single-select mr-0">
-                                                        <option value="">Type</option>
-                                                        @foreach ($types as $type)
-                                                            <option value="{{ $type->id }}"
-                                                                @if ($type_id == $type->id) selected @endif>
-                                                                {{ $type->title }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="col-6 mb-md-4 px-xs-1">
@@ -109,16 +96,10 @@
                                                         placeholder="Surface Min">
                                                 </div>
                                             </div>
-                                            <div class="col-6 mb-md-4 px-xs-1">
+                                            <div class="col-12 mb-md-4 px-xs-1">
                                                 <div class="rld-single-input">
                                                     <input name="prix_max" value="{{ $prix_max }}" type="number"
                                                         placeholder="Prix Max">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 mb-md-4 px-xs-1">
-                                                <div class="rld-single-input">
-                                                    <input name="reference" value="{{ $reference }}" type="text"
-                                                        placeholder="Réference...">
                                                 </div>
                                             </div>
                                             <div class="col-12">

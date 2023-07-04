@@ -163,7 +163,7 @@ Route::post('/produit/contact/{id?}', [HomeController::class, 'produitContact'])
 
 Route::get('/decouvrezMaroc', [HomeController::class, 'decouvrezMaroc'])->name('decouvrezMaroc');
 Route::get('/decouvrezMaroc/{slug}', [HomeController::class, 'blogDetails'])->name('decouvrezMarocDetails');
-Route::get('/conseils', [HomeController::class, 'conseils'])->name('conseils');
+Route::get('/blogs', [HomeController::class, 'conseils'])->name('conseils');
 Route::get('/filterConseils', [HomeController::class, 'filterConseils'])->name('filterConseils');
 Route::get('/conseils/{slug}', [HomeController::class, 'blogDetails'])->name('conseilsDetails');
 Route::get('/ville/{slug}', [HomeController::class, 'villeDetails'])->name('villeDetails');

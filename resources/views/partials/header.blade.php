@@ -24,10 +24,7 @@
                     <li><a href="/location">Location</a></li>
                     <li><a href="/vacances">Vacances</a></li>
                     <li><a href="/immoneuf">Immo neuf</a></li>
-                    <li><a href="/conseils">Conseils Immobilier</a></li>
-                    <li><a href="/decouvrezMaroc">Decouvrez le maroc</a></li>
-                    <li><a href="/commercialiser">Commercialiser Votre bien</a></li>
-                    <li><a href="/">Nos Services</a></li>
+                    <li><a href="/blogs">Blogs</a></li>
                 </ul>
             </nav>
         </div>

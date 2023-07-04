@@ -208,13 +208,17 @@
                 <div class="col-md-6 col-12">
                     <h2 style="text-transform: none">Les clés du succès pour vos projets immobiliers</h2>
                     <h3 style="text-transform: none">Trouvez votre chez-vous avec notre aide</h3>
-					<p>Restez à jour avec les dernières réglementations, conseils, obligations, formalités et actualités du secteur immobilier au Maroc, en matière d'achat, de vente ou de location immobilières. Notre plateforme vous offre un accès privilégié à toutes ces informations essentielles. 
-					Que vous soyez un acheteur, un vendeur, ou un locataire, nous vous fournissons les conseils pertinents pour vous guider dans vos décisions. De plus, nous vous tenons informés des obligations légales afin que vous puissiez mener vos transactions en toute conformité. 
-					Soyez au fait des actualités récentes du marché immobilier marocain et restez informé des formalités requises pour garantir le succès de vos projets immobiliers.</p>
+                    <p>Restez à jour avec les dernières réglementations, conseils, obligations, formalités et actualités du
+                        secteur immobilier au Maroc, en matière d'achat, de vente ou de location immobilières. Notre
+                        plateforme vous offre un accès privilégié à toutes ces informations essentielles.
+                        Que vous soyez un acheteur, un vendeur, ou un locataire, nous vous fournissons les conseils
+                        pertinents pour vous guider dans vos décisions. De plus, nous vous tenons informés des obligations
+                        légales afin que vous puissiez mener vos transactions en toute conformité.
+                        Soyez au fait des actualités récentes du marché immobilier marocain et restez informé des formalités
+                        requises pour garantir le succès de vos projets immobiliers.</p>
                 </div>
                 <div class="col-md-6 col-12">
-                    <img style="max-height: fit-content;"
-                        src="{{ asset('assets/images/post-5-01.jpg') }}"
+                    <img style="max-height: fit-content;" src="{{ asset('assets/images/post-5-01.jpg') }}"
                         alt="Annonce immobilière particulier à particulier">
                 </div>
             </div>
