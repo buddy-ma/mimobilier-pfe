@@ -121,7 +121,7 @@
 
                                 <hr>
 
-                                <h4>Contact</h4>
+                                <h4>Demande de visite</h4>
 
                                 @if ($errors->any())
 
