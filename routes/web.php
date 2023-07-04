@@ -74,6 +74,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:web']], function () {
     Route::get('/annonces/delete/{id?}', [AnnonceController::class, 'deleteannonce'])->name('annonce-delete');
     Route::get('/annoncesimages/delete/{id?}', [AnnonceController::class, 'deleteimages'])->name('images-delete');
 
+    Route::get('/contacts', [AnnonceController::class, 'contacts'])->name('annonce-contacts');
+
     //gestion TypeAnnonce
     Route::get('/Typeannonce', [TypeAnnonceController::class, 'Typeannonce'])->name('typeannonce-list');
     Route::get('/Typeannonce/add', [TypeAnnonceController::class, 'ShowAddType'])->name('show-type-add');

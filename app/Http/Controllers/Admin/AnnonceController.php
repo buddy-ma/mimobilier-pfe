@@ -148,4 +148,9 @@ class AnnonceController extends Controller
 
     return Redirect::to("admin/annonces")->with('success', 'les images sont supprimé avec succes');
   }
+
+  public function contacts()
+  {
+    return view('admin.mains-admin.annonces.annonce-contacts');
+  }
 }
