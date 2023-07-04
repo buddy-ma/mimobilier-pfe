@@ -1,0 +1,142 @@
+section.welcome-area.overlay::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    opacity: 0.2;
+    z-index: -1;
+}
+@media (min-width:1025px) {
+    .hero-main .container form > .row {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    }
+}
+.homepage-3 .rld-main-search .rld-single-select .single-select {
+    cursor: pointer;
+}
+select.select.single-select {
+    cursor: pointer;
+}
+.homepage-3 .rld-banner-tab .nav-item a {
+    cursor: pointer;
+}
+.homepage-3 .rld-banner-tab .nav-item a.active {
+    border: 2px solid #18ba60 !important;
+}
+.homepage-3 .rld-banner-tab .nav-item a:hover {
+    border: 2px solid #18ba60 !important;
+}
+.portfolio .project-single {
+    cursor: pointer;
+}
+.portfolio .project-single:hover {
+    transform: scale(1.03);
+}
+.go-up {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 26%);
+}
+.homepage-3 .portfolio .homes-content h3 a:hover {
+    color: #18ba60;
+}
+.portfolio .project-single:hover a {
+    color: #18ba60;
+}
+.homepage-3 #navigation.style-1 ul li:hover {
+    background: #18ba60 !important;
+}
+
+@media (min-width:1400px) {
+    .col-md-4.col-12.no-mobile {
+    flex: 0 0 40% !important;
+    min-width: 40% !important;
+    max-width: 50% !important;
+    }
+    .welcome-area .container {
+    min-width: 80%;
+    }
+    .welcome-area .container {
+        max-width: 80%;
+    }
+}
+.product-price a {
+    font-size: 25px !important;
+    color: #18ba60 !important;
+    font-weight: 600 !important;
+}
+.homes-list {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+.homepage-3 .portfolio .homes-content .homes-list li {
+    min-width: 50% !important;
+    width: 50% !important;
+}
+
+.fa-hashtag, .fa-home, .fa-arrows, .fa-bed {
+    font-family: 'FontAwesome';
+}
+.homes-list .fa-arrows {
+    transform: rotate(45deg) !important;
+}
+.portfolio .homes-content {
+    min-height: 370px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+.portfolio .homes-content .homes-list {
+    margin: 0;
+    border-top: 1px solid #eee;
+    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*.reference {*/
+/*    font-size: 14px !important;*/
+/*    display: flex !important;*/
+/*    margin: 0 !important;*/
+/*}*/
+/*.reference span {*/
+/*    font-weight: bolder !important;*/
+/*}*/
+/*.price-properties {*/
+/*    display: flex !important;*/
+/*    flex-direction: row !important;*/
+/*    justify-content: space-between !important;*/
+/*    align-items: center !important;*/
+/*}*/
+/*.reference span {*/
+/*    color: black;*/
+/*    float: left !important;*/
+/*    padding: 0 !important;*/
+/*    margin: 0 !important;*/
+/*    margin-left: 8px !important;*/
+/*}*/
+
+
+
+
+
+
+
+
+
+
+

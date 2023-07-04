@@ -1,19 +1,19 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AnnonceController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\PaiementController;
+use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\StatisticsController;
+use App\Http\Controllers\Admin\StatisticspromoController;
+use App\Http\Controllers\Admin\TypeAnnonceController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Admin\AnnonceController;
-use App\Http\Controllers\Admin\LocateurController;
-use App\Http\Controllers\Admin\PaiementController;
-use App\Http\Controllers\Admin\StatisticsController;
-use App\Http\Controllers\Admin\ReservationController;
-use App\Http\Controllers\Admin\TypeAnnonceController;
-use App\Http\Controllers\Admin\StatisticspromoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Promoteur\AnnoncepromoController;
 use App\Http\Controllers\Promoteur\PaiementpromoController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -148,6 +148,23 @@ Route::group(['prefix' => 'promoteur'], function () {
     Route::get('/deletepaiement/{id?}', [PaiementpromoController::class, 'deletepaiment'])->name('paiementpromo-delete');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/getQuartier', [HomeController::class, 'getQuartier'])->name('getQuartier');
+
+Route::get('/achat', [HomeController::class, 'achat'])->name('achat');
+Route::get('/vacances', [HomeController::class, 'vacances'])->name('vacances');
+Route::get('/location', [HomeController::class, 'location'])->name('location');
+Route::get('/immoneuf', [HomeController::class, 'immoneuf'])->name('immoneuf');
+
+Route::get('/produit/{slug}', [HomeController::class, 'produit'])->name('produit');
+Route::get('/vues_phone', [HomeController::class, 'vues_phone'])->name('vues_phone');
+Route::post('/produit/contact/{id?}', [HomeController::class, 'produitContact'])->name('produitContact');
+
+Route::get('/decouvrezMaroc', [HomeController::class, 'decouvrezMaroc'])->name('decouvrezMaroc');
+Route::get('/decouvrezMaroc/{slug}', [HomeController::class, 'blogDetails'])->name('decouvrezMarocDetails');
+Route::get('/conseils', [HomeController::class, 'conseils'])->name('conseils');
+Route::get('/filterConseils', [HomeController::class, 'filterConseils'])->name('filterConseils');
+Route::get('/conseils/{slug}', [HomeController::class, 'blogDetails'])->name('conseilsDetails');
+Route::get('/ville/{slug}', [HomeController::class, 'villeDetails'])->name('villeDetails');
+Route::get('/quartier/{slug}', [HomeController::class, 'blogDetails'])->name('quartierblogDetails');
