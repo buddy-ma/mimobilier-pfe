@@ -15,9 +15,11 @@ use Image;
 
 class AnnonceController extends Controller
 {
-  public function annonces()
+  public function annonces(Request $request)
   {
-    $annonces = Annonce::all();
+    if ($request->search)
+      $annonces = Annonce::where('Titre', $request->search)->get();
+    else $annonces = Annonce::all();
     return view('admin.mains-admin.annonces.list', compact('annonces'));
   }
 

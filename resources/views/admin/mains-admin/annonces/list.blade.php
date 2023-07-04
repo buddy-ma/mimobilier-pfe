@@ -14,12 +14,38 @@
 @endsection
 @section('page-header')
     <div class="page-header">
-        <h4 class="justify-content-center">Tous les annonces</h4>
-        <a class="btn btn-primary float-right ml-auto" href="{{ route('show-annonce-add') }}"> add annonce</a>
     </div>
 @endsection
 @section('content')
     <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <div class="row w-100">
+                    <div class="col-4">
+                        <h4 class="card-title" style="line-height: 2">Tous les annonces</h4>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <form action="/admin/annonces" method="get">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="text" name="search" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-append">
+                                        <button class="btn btn-secondary box-shadow-0" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <a class="btn btn-primary float-right ml-auto" href="{{ route('show-annonce-add') }}"> add
+                            annonce</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             @foreach ($annonces as $item)
                 <div class="col-3">
